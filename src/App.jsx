@@ -11,15 +11,20 @@ const App = () => {
   let randomizer2 = Math.floor(Math.random() * 5);
   let randomAge = Math.floor(Math.random() * 60);
 
-  const [users, generateUsers] = useState({ name: names[randomizer], lastName: lastName[randomizer2], age: randomAge, id: Math.floor(Math.random() * 10000), id2: Math.floor(Math.random() * 10000) },)
+  let [users, generateUsers] = useState([
+    { name: names[randomizer], lastName: lastName[randomizer2], age: randomAge, id: Math.floor(Math.random() * 10000), id2: Math.floor(Math.random() * 10000) },
+  ])
 
   function addUsers() {
-    generateUsers({ name: names[randomizer], lastName: lastName[randomizer2], age: randomAge, id: Math.floor(Math.random() * 10000), id2: Math.floor(Math.random() * 10000) },);
+    generateUsers(users + { name: names[randomizer], lastName: lastName[randomizer2], age: randomAge, id: Math.floor(Math.random() * 10000), id2: Math.floor(Math.random() * 10000) });
     console.log(users);
   }
 
-  let usersContainer = [users];
-  usersContainer + users
+  console.log(users);
+
+
+
+
   return (
     <>
       <button onClick={addUsers}>
@@ -27,7 +32,7 @@ const App = () => {
       </button>
 
       <div className='user_div'>
-        {usersContainer.map(users => {
+        {users.map(users => {
           return (
             <button key={users.id2}>
               <p key={users.name}><span className='span_user'>name: </span>  {users.name}</p>

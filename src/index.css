@@ -37,6 +37,9 @@ h1 {
 
 .user_div {
   margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .span_user {
@@ -72,6 +75,6 @@ button:focus-visible {
   }
   button {
     /* background-color: #f9f9f9; */
-    background-color: #afafaf;
+    background-color: #dfdede;
   }
 }
