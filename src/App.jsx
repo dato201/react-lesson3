@@ -1,34 +1,41 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
+function generateUsers0() {
+  return [
+    { name: 'lasha', lastName: 'vaxtangidze', age: 15, id: 3610, id2: 3681 },
+    { name: 'dato', lastName: 'guramishvili', age: 12, id: 4238, id2: 7405 },
+    { name: 'gurami', lastName: 'guramishvili', age: 27, id: 7112, id2: 2345 },
+    { name: 'lasha', lastName: 'guramishvili', age: 52, id: 1948, id2: 9623 },
+    { name: 'lasha', lastName: 'ipsumishvili', age: 18, id: 8366, id2: 3060 },
+    { name: 'gurami', lastName: 'ipsumishvili', age: 44, id: 801, id2: 4614 },
+    { name: 'dato', lastName: 'balxamishvili', age: 58, id: 438, id2: 2683 },
+    { name: 'soso', lastName: 'ipsumishvili', age: 44, id: 2139, id2: 7966 },
+    { name: 'dato', lastName: 'vaxtangidze', age: 8, id: 6947, id2: 261 },
+    { name: 'gela', lastName: 'ivanishvili', age: 80, id: 434553, id2: 3444 },
+
+  ]
+}
+
 const App = () => {
-  const names = ['dato', 'lasha', 'gurami', 'soso', 'gela', 'tato'];
-  const lastName = ['balxamishvili', 'guramishvili', 'vaxtangidze', 'ipsumishvili', 'lalalala', 'ugydrhyisnfj'];
+  const [users, generateUsers] = useState(generateUsers0())
 
-  let randomizer = Math.floor(Math.random() * 5);
-  let randomizer2 = Math.floor(Math.random() * 5);
-  let randomAge = Math.floor(Math.random() * 60);
+  let usersCount = users.length;
+  document.title = `${usersCount} users left`;
 
-  let [users, generateUsers] = useState([
-    { name: names[randomizer], lastName: lastName[randomizer2], age: randomAge, id: Math.floor(Math.random() * 10000), id2: Math.floor(Math.random() * 10000) },
-  ])
+  function DeleteUsers() {
+    let min = 0;
+    let max = users.length;
 
-  function addUsers() {
-    generateUsers(users + { name: names[randomizer], lastName: lastName[randomizer2], age: randomAge, id: Math.floor(Math.random() * 10000), id2: Math.floor(Math.random() * 10000) });
-    console.log(users);
+    let random = Math.floor(Math.random() * (max - min) + min);
+
+    generateUsers(users.filter((_, index) => index !== random))
   }
-
-  console.log(users);
-
-
-
 
   return (
     <>
-      <button onClick={addUsers}>
-        generateUsers
+      <button onClick={DeleteUsers}>
+        Delete Random
       </button>
 
       <div className='user_div'>
